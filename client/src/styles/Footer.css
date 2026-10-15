@@ -1,0 +1,69 @@
+.footer.spendly-footer {
+  padding: 36px clamp(20px, 5vw, 72px) 80px;
+}
+
+.spendly-footer-content,
+.spendly-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer .spendly-footer-brand {
+  padding: 0;
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.spendly-footer-brand span {
+  color: #a5b4fc;
+}
+
+.footer .spendly-footer-tagline {
+  margin-top: 8px;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.spendly-footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.footer .spendly-footer-contact a {
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+
+.spendly-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 20px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: #cbd5e1;
+  flex-wrap: wrap;
+}
+
+.spendly-footer-bottom nav {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .spendly-footer-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .spendly-footer-contact {
+    align-items: flex-start;
+  }
+}

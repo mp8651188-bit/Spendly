@@ -1,0 +1,100 @@
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-primary: #1e293b;
+  --bg-secondary: #0f172a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-light: #94a3b8;
+  --gray-50: #263449;
+  --gray-100: #28374d;
+  --gray-200: #334155;
+  --gray-300: #475569;
+  --gray-600: #cbd5e1;
+  --gray-700: #e2e8f0;
+  --gray-800: #f1f5f9;
+  --gray-900: #f8fafc;
+}
+
+.theme-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1100;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--gray-300);
+  border-radius: 24px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+  font: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 3px;
+}
+
+html[data-theme="dark"] :is(
+  .ant-table, .ant-table-tbody > tr > td,
+  .ant-modal-content, .ant-modal-header, .ant-modal-footer,
+  .ant-card, .ant-card-head, .ant-dropdown-menu,
+  .ant-select-dropdown, .ant-select-selector,
+  .ant-input, .ant-input-affix-wrapper, .ant-input-number,
+  .ant-picker, .ant-picker-panel-container, .ant-picker-panel,
+  .ant-pagination-item, .ant-pagination-item-link,
+  .ant-btn-default
+) {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--gray-200) !important;
+}
+
+html[data-theme="dark"] :is(
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr:hover > td,
+  .ant-select-item-option-active, .ant-select-item-option-selected,
+  .ant-dropdown-menu-item:hover
+) {
+  background: var(--gray-100) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] :is(
+  .ant-modal-title, .ant-modal-close, .ant-form-item-label > label,
+  .ant-select-item, .ant-select-arrow, .ant-picker-input > input,
+  .ant-dropdown-menu-item, .ant-empty-description,
+  .ant-pagination-item a, .ant-statistic-title,
+  .ant-statistic-content, .ant-descriptions-item-label,
+  .ant-descriptions-item-content
+) {
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] input::placeholder {
+  color: var(--text-light) !important;
+}
+
+html[data-theme="dark"] :is(.home, .auth-page-wrapper) {
+  background: linear-gradient(135deg, #0f172a, #24304f) !important;
+}
+
+html[data-theme="dark"] :is(
+  .login-form, .register-form, .admin-login-form, .admin-request-form
+) {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary);
+  border-color: var(--gray-200);
+}
+
+html[data-theme="dark"] :is(.login-form, .register-form) .line::before {
+  background: var(--bg-primary);
+}
