@@ -1,181 +1,118 @@
-# **Expense Management System**
+﻿# Spendly
 
-## 🌐 GitHub Repo  
+A personal expense tracker to record income and expenses, understand spending patterns, and manage your money.
+
+[Repository](https://github.com/mp8651188-bit/Spendly) · [Maintainer](https://github.com/mp8651188-bit) · [Contact](mailto:mp8651188@gmail.com)
+
+**Status:** Runs locally. A public demo has not been deployed yet.
+
+## Features
+
+- Registration, email verification, login, and password recovery.
+- Google sign-in with configured OAuth credentials.
+- Add, edit, delete, search, and categorize transactions.
+- Filter income and expenses by type and date range.
+- Financial summaries and category analytics.
+- Export transaction reports to Excel.
+- Profile and password management.
+- Light and dark themes, contact pages, and an admin area.
+
+## Screenshots
+
+Captured from the local Spendly website. You can preview the design here without running the app.
+
+### Home
+
+![Spendly home page](docs/screenshots/home.png)
+
+### Login
+
+![Spendly login page](docs/screenshots/login.png)
+
+### Registration
+
+![Spendly registration page](docs/screenshots/register.png)
+
+### About Spendly
+
+![About Spendly](docs/screenshots/about.png)
+
+## Tech stack
+
+| Layer | Technologies |
+| --- | --- |
+| Frontend | React 18, React Router, Ant Design, CSS |
+| Backend | Node.js, Express, Passport, JWT, bcrypt |
+| Database | MongoDB, Mongoose |
+| Email | Nodemailer / SMTP |
+| Reports | SheetJS, FileSaver |
+
+## Run locally
+
+Install Node.js and npm, and prepare a MongoDB database. Email features need SMTP credentials; Google sign-in needs OAuth credentials.
+
 ```bash
-https://github.com/Prakashsaw/Expense-Management-System
+git clone https://github.com/mp8651188-bit/Spendly.git
+cd Spendly
+npm install --prefix client
+npm install --prefix server
 ```
 
-## 🚀 Live Demo  
-```bash
-https://expense-management-system-prakash.netlify.app/
+Create `server/.env` with your own values:
+
+```dotenv
+MONGO_URL=mongodb://127.0.0.1:27017/spendly
+PORT=8000
+BCRYPT_SALT=10
+JWT_SECRETE_KEY=replace-with-a-long-random-secret
+EXPIRE_IN=7d
+
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=465
+EMAIL_USER=your-email@example.com
+EMAIL_PASS=your-smtp-app-password
+EMAIL_FROM=your-email@example.com
+
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_CALLBACK_URL=http://localhost:8000/auth/google/callback
+
+# Only needed for SMS verification:
+FAST2SMS_API_KEY=your-fast2sms-api-key
 ```
 
-## 📌 Description  
-The **Expense Management System** is a web-based application designed to help users efficiently track and manage their financial transactions.  
-It provides features like user authentication, expense tracking, and data visualization to ensure a seamless budgeting experience.
+Keep credentials and `.env` files out of version control. See [email setup](server/EMAIL_SETUP.md) for SMTP configuration. The backend initializes Google OAuth at startup, so supply valid OAuth configuration when starting it.
 
-### 🔹 Key Functionalities:  
-- **User Authentication:** Secure login & registration with **email verification**.  
-- **Password Security:** **Bcrypt** encryption for passwords and **JWT token-based authentication**.  
-- **Password Recovery:** Forgot password functionality with email-based reset link.  
-- **Expense Management:** Add, edit, delete, and categorize expenses with filtering options.  
-  - **Search Transactions:** Search for specific transactions quickly.  
-  - **Export to Excel:** Download filtered expenses with a date-based filename.  
-- **Financial Insights:** View expenses **weekly, monthly, yearly**, and through **custom date ranges**.  
-- **Data Analytics:** Expense visualization with **charts & graphs**.
+Start the backend:
 
----
-
-## 🛠 Tech Stack  
-
-### **Frontend:**  
-- React.js, Bootstrap, Ant Design, CSS  
-
-### **Backend:**  
-- Node.js, Express.js, Nodemailer
-
-### **Database:**  
-- MongoDB  
-
----
-
-## ⚙️ Run Locally  
-
-### **Step 1: Clone the project**  
 ```bash
-git clone https://github.com/Prakashsaw/Expense-Management-System.git
-```
-
-### **Step 2: Navigate to the project directory**  
-```bash
-cd Expense-Management-System
-```
-
-### **Step 3: Install dependencies**  
-
-#### Install dependencies for the frontend  
-```bash
-cd client/
-npm install
-```
-
-#### Install dependencies for the backend  
-```bash
-cd server/
-npm install
-```
-
-### **Step 4: Set up environment variables**  
-Create a **.env** file inside the `server/` directory and add the following:  
-```bash
-MONGO_URL=
-PORT=
-
-BCRYPT_SALT=
-JWT_SECRETE_KEY=
-EXPIRE_IN=
-
-EMAIL_HOST=
-EMAIL_PORT=
-EMAIL_USER=
-EMAIL_PASS=
-EMAIL_FROM=
-
-FAST2SMS_API_KEY=
-```
-
-### **Step 5: Start the application**  
-
-#### Start the frontend  
-```bash
-// Open a new terminal
-cd client
-npm run start
-```
-
-#### Start the backend  
-```bash
-// Open a new terminal
 cd server
-npm run start
+node server.js
 ```
 
-### **Step 6: Access the app**  
-Once the setup is complete, the app will be running on your local system.  
+In a separate terminal, from the repository root, start the frontend:
 
----
+```bash
+cd client
+npm start
+```
 
-## 🔥 Features
+Open **http://localhost:3000**. The API runs at **http://localhost:8000**. Local URLs are configured in `client/src/utils/baseURL.js` and `server/utils/baseURL.js`.
 
-- **🔒 Secure User Authentication:** Register, log in, and log out securely.  
-- **📧 Email Verification:** Verify accounts via a confirmation link sent to the email.  
-- **🔑 Password Management:** Forgot password functionality with email reset link.  
-- **📝 User Profile Management:** Update profile details and change passwords after login.  
+## Project structure
 
-- **💰 Transaction Management:**  
-  - Add, edit, and delete financial transactions with confirmation prompts.  
-  - Categorize transactions into **income** or **expenses**.  
-  - **🔍 Search Transactions:** Quickly search for transactions using keywords.  
-  - **📤 Export to Excel:** Download filtered transactions as an Excel file with a **date-based filename**.  
+```text
+client/             React application and frontend assets
+server/             Express API, models, authentication, and email services
+docs/screenshots/   Current Spendly website screenshots
+```
 
-- **📊 Financial Overview:**  
-  - View transaction history **weekly, monthly, and yearly**.  
-  - Filter transactions by **custom date range**.  
-  - Filter by **income, expenses, or both**.  
+## Maintainer
 
-- **📈 Data Analytics:** Interactive **graphs & charts** for expense tracking.
+Spendly is customized and maintained by [@mp8651188-bit](https://github.com/mp8651188-bit).
 
+Contact: [mp8651188@gmail.com](mailto:mp8651188@gmail.com).
 
----
+## Credits
 
-## 📸 Screenshots  
-
-### **Authentication & User Management**  
-| Feature | Screenshot |
-|---------|-----------|
-| **Homepage** | ![Home Page](client/src/Images/1-home-page.png) |
-| **User Sign Up** | ![Sign Up](client/src/Images/3-signup.png) |
-| **User Lofin** | ![Login Page](client/src/Images/2-login.png) |
-| **Forgot Password** | ![Forgot Password](client/src/Images/14-forgot-password.png) |
-| **User Profile Menu** | ![User Profile Menu](client/src/Images/11-see-menu-for-user-profile.png) | 
-| **Update User Profile** | ![Update Profile](client/src/Images/12-update-profile.png) |
-| **Change User Password** | ![Change Password](client/src/Images/13-change-password.png) |
-
-### **Expense Management**
-| Feature | Screenshot |
-|---------|-----------|  
-| **Expense Home Page** | ![Expense Homepage](client/src/Images/5-expense-homepage.png) |
-| **Add Expense** | ![Add Expense](client/src/Images/6-add-expense.png) | 
-| **Filter Expense** | ![Filter Expenses](client/src/Images/7-filter-expense.png) |
-| **Edit and Update Expense** | ![Update Expense](client/src/Images/8-update-expense.png)  
-| **Delete Expense Warning** | ![Delete Expense Warning](client/src/Images/10-delete-warning.png) |  
-| **Expense Analytics** | ![Expense Analytics](client/src/Images/9-expense-amalytics.png) |
-
-### **Contact Us**  
-| Feature | Screenshot |
-|---------|-----------|
-| **Contact Us** | ![Contact Us](client/src/Images/4-contact-us.png) |
-| **Copy Right** | ![Copy Right Footer](client/src/Images/15-copy-right.png) |
-
----
-
-## 🛠 Made By  
-- [@Prakashsaw](https://github.com/Prakashsaw)  
-
----
-
-## 📝 License & Agreement  
-
-### **License**  
-This project is licensed under the **MIT License**.  
-You are free to use, modify, and distribute this software as long as you include the original license.
-
-### **Usage Agreement**  
-By using this software, you agree to the following:  
-- You will not use this project for any **illegal or unethical** activities.  
-- If modified and redistributed, proper credit must be given to the original creator.  
-- The software is provided **"as-is"**, without any guarantees of functionality or security.  
-
----
-
-### **🌟 If you like this project, don't forget to star the repo!** ⭐  
+Based on [Expense Management System by Prakashsaw](https://github.com/Prakashsaw/Expense-Management-System). The original project identifies its license as MIT; preserve applicable original notices when redistributing.
