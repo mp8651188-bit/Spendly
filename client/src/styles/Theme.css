@@ -98,3 +98,9 @@ html[data-theme="dark"] :is(
 html[data-theme="dark"] :is(.login-form, .register-form) .line::before {
   background: var(--bg-primary);
 }
+
+html[data-theme="dark"] :is(.legal-document, .about-us-card) {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--gray-200);
+}

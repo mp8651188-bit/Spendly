@@ -1,251 +1,71 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header1 from "../../components/Layout/Header1";
 import Footer from "../../components/Layout/Footer";
 import "./PrivacyAndPolicy.css";
 
-const PrivacyAndPolicy = () => {
-  return (
-    <>
-      <Header1 />
-      <div className="auth-page-wrapper">
-        <div className="legal-content">
-          <div className="legal-container">
-            <div className="legal-document">
-              <h1 className="legal-title">Privacy Policy</h1>
-              <p className="legal-last-updated">Last Updated: January 2026</p>
+const sections = [
+  {
+    title: "Information you provide",
+    text: "Spendly stores the name, email address, and account details you provide when registering. Optional profile details may include your phone number, secondary email, address, birth date, gender, and favourite sport. Passwords for email accounts are stored as bcrypt hashes.",
+  },
+  {
+    title: "Your financial records",
+    text: "We store the income and expenses you enter, including amounts, dates, categories, references, and descriptions, to show your transaction history and calculate summaries. Spendly records transactions you enter manually; you do not need to provide bank passwords, card PINs, or payment credentials. Please keep these details out of transaction notes and contact messages.",
+  },
+  {
+    title: "How your information is used",
+    text: "Account details support sign-in, profile management, verification, and password recovery. Transaction records power your filters, financial summaries, analytics, and Excel exports. If you send a contact message, the information you submit is used to respond to your enquiry.",
+  },
+  {
+    title: "Browser storage and sign-out",
+    text: "Spendly uses browser local storage to remember your signed-in account and authentication token, and to save your light or dark theme preference. Signing out removes the saved account from that browser. Clearing browser storage also removes local preferences, but does not delete records saved in the database. Sign out when using a shared device.",
+  },
+  {
+    title: "Connected services",
+    text: "If you choose Google sign-in, Google provides the account information used to identify you, such as your name, email, and Google account identifier. Configured email providers process recipient addresses and message contents to deliver verification and password reset emails. Phone verification, when configured and used, sends your number to the SMS provider. Database and hosting providers may also process stored records and request logs, depending on how the app is run. These providers handle information under their own policies.",
+  },
+  {
+    title: "Storage and security",
+    text: "Financial and account records are stored in the application's configured database, rather than only in your browser. Even when accessed through localhost, configured database, email, and sign-in services may be remote. Password hashing and authentication tokens help protect account access, but no system can guarantee complete security. The current local setup uses HTTP; use it on a trusted device and connection.",
+  },
+  {
+    title: "Managing and removing your information",
+    text: "You can review and edit your profile, change your password, edit or delete individual transactions, and export transaction reports from the dashboard. Records remain in the configured database unless removed; signing out does not erase them. For help with account deletion, a copy of your information, or a privacy concern, contact the maintainer below. Any removal from backups depends on the database provider and backup configuration.",
+  },
+  {
+    title: "Updates to this notice",
+    text: "This notice describes the current version of Spendly. It will be revised when the app's features or data handling change, with the latest update date shown on this page.",
+  },
+];
 
-              <section className="legal-section">
-                <h2 className="legal-heading">1. Introduction</h2>
-                <p className="legal-text">
-                  Spendly ("we," "our," or "us") operates Spendly ("the Service"). This Privacy Policy informs you of our policies regarding
-                  the collection, use, and disclosure of personal data when you use our Service and
-                  the choices you have associated with that data.
-                </p>
-                <p className="legal-text">
-                  We are committed to protecting your privacy and ensuring the security of your
-                  personal information. By using our Service, you agree to the collection and use
-                  of information in accordance with this policy.
-                </p>
+const PrivacyAndPolicy = () => (
+  <>
+    <Header1 allowAuthenticated />
+    <main className="auth-page-wrapper">
+      <div className="legal-content">
+        <div className="legal-container">
+          <article className="legal-document">
+            <h1 className="legal-title">Privacy Policy</h1>
+            <p className="legal-last-updated">Last updated: 16 October 2026</p>
+            <p className="legal-text">Your financial records are personal. This page explains what Spendly stores, why it is needed, and how you can manage your information while using the expense tracker.</p>
+            {sections.map(({ title, text }, index) => (
+              <section className="legal-section" key={title}>
+                <h2 className="legal-heading">{index + 1}. {title}</h2>
+                <p className="legal-text">{text}</p>
               </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">2. Information We Collect</h2>
-
-                <h3 className="legal-subheading">2.1 Personal Information</h3>
-                <p className="legal-text">
-                  When you register for an account, we collect:
-                </p>
-                <ul className="legal-list">
-                  <li>Name</li>
-                  <li>Email address</li>
-                  <li>Phone number (optional)</li>
-                  <li>Address (optional)</li>
-                  <li>Birth date (optional)</li>
-                  <li>Password (encrypted and stored securely)</li>
-                </ul>
-
-                <h3 className="legal-subheading">2.2 Financial Transaction Data</h3>
-                <p className="legal-text">
-                  When you use the Service, we collect and store:
-                </p>
-                <ul className="legal-list">
-                  <li>Income and expense transactions</li>
-                  <li>Transaction amounts, dates, and categories</li>
-                  <li>Transaction descriptions and notes</li>
-                </ul>
-
-                <h3 className="legal-subheading">2.3 Usage Data</h3>
-                <p className="legal-text">
-                  We may collect information about how you access and use the Service, including:
-                </p>
-                <ul className="legal-list">
-                  <li>IP address</li>
-                  <li>Browser type and version</li>
-                  <li>Pages visited and time spent on pages</li>
-                  <li>Date and time of access</li>
-                  <li>Device information</li>
-                </ul>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">3. How We Use Your Information</h2>
-                <p className="legal-text">
-                  We use the collected information for various purposes:
-                </p>
-                <ul className="legal-list">
-                  <li>To provide and maintain our Service</li>
-                  <li>To notify you about changes to our Service</li>
-                  <li>To allow you to participate in interactive features of our Service</li>
-                  <li>To provide customer support and respond to your inquiries</li>
-                  <li>To gather analysis or valuable information to improve our Service</li>
-                  <li>To monitor the usage of our Service</li>
-                  <li>To detect, prevent, and address technical issues</li>
-                  <li>To send you email verification links and password reset links</li>
-                  <li>To send OTP (One-Time Password) for phone verification</li>
-                </ul>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">4. Data Security</h2>
-                <p className="legal-text">
-                  We implement appropriate security measures to protect your personal information:
-                </p>
-                <ul className="legal-list">
-                  <li>Passwords are encrypted using Bcrypt hashing algorithm</li>
-                  <li>Authentication is secured using JWT (JSON Web Tokens)</li>
-                  <li>Data transmission is encrypted using HTTPS/SSL protocols</li>
-                  <li>Access to personal data is restricted to authorized personnel only</li>
-                  <li>Regular security audits and updates are performed</li>
-                </ul>
-                <p className="legal-text">
-                  However, no method of transmission over the Internet or electronic storage is
-                  100% secure. While we strive to use commercially acceptable means to protect
-                  your data, we cannot guarantee absolute security.
-                </p>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">5. Data Storage and Retention</h2>
-                <p className="legal-text">
-                  Your data is stored securely in our database. We retain your personal information
-                  and transaction data for as long as your account is active or as needed to provide
-                  you with the Service. If you delete your account, we will delete or anonymize your
-                  personal information, except where we are required to retain it by law.
-                </p>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">6. Third-Party Services</h2>
-
-                <h3 className="legal-subheading">6.1 Google Authentication</h3>
-                <p className="legal-text">
-                  Our Service offers Google OAuth authentication. When you choose to sign in with
-                  Google, Google may collect certain information. Please review Google's Privacy
-                  Policy to understand how they handle your data.
-                </p>
-
-                <h3 className="legal-subheading">6.2 Email Services</h3>
-                <p className="legal-text">
-                  We use email services (Nodemailer) to send verification emails, password reset
-                  links, and other service-related communications. Your email address is shared
-                  with these services solely for the purpose of sending emails.
-                </p>
-
-                <h3 className="legal-subheading">6.3 SMS Services</h3>
-                <p className="legal-text">
-                  If you choose to verify your phone number, we use SMS services (Fast2SMS) to
-                  send OTP codes. Your phone number is shared with these services solely for
-                  the purpose of sending verification codes.
-                </p>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">7. Your Rights and Choices</h2>
-                <p className="legal-text">
-                  You have the right to:
-                </p>
-                <ul className="legal-list">
-                  <li>Access your personal information and transaction data</li>
-                  <li>Update or correct your personal information through your account settings</li>
-                  <li>Delete your account and associated data</li>
-                  <li>Export your transaction data using the Excel export feature</li>
-                  <li>Opt-out of certain communications (except service-related emails)</li>
-                  <li>Request a copy of your data</li>
-                </ul>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">8. Cookies and Tracking Technologies</h2>
-                <p className="legal-text">
-                  We use cookies and similar tracking technologies to:
-                </p>
-                <ul className="legal-list">
-                  <li>Maintain your login session</li>
-                  <li>Remember your preferences</li>
-                  <li>Analyze Service usage</li>
-                  <li>Improve user experience</li>
-                </ul>
-                <p className="legal-text">
-                  You can instruct your browser to refuse all cookies or to indicate when a cookie
-                  is being sent. However, if you do not accept cookies, you may not be able to use
-                  some portions of our Service.
-                </p>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">9. Children's Privacy</h2>
-                <p className="legal-text">
-                  Our Service is not intended for children under the age of 18. We do not knowingly
-                  collect personal information from children under 18. If you are a parent or guardian
-                  and believe your child has provided us with personal information, please contact
-                  us immediately.
-                </p>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">10. Data Sharing and Disclosure</h2>
-                <p className="legal-text">
-                  We do not sell, trade, or rent your personal information to third parties. We may
-                  share your information only in the following circumstances:
-                </p>
-                <ul className="legal-list">
-                  <li>With your explicit consent</li>
-                  <li>To comply with legal obligations or court orders</li>
-                  <li>To protect our rights, privacy, safety, or property</li>
-                  <li>With service providers who assist us in operating our Service (under strict
-                      confidentiality agreements)</li>
-                  <li>In connection with a business transfer or merger</li>
-                </ul>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">11. International Data Transfers</h2>
-                <p className="legal-text">
-                  Your information may be transferred to and maintained on computers located outside
-                  of your state, province, country, or other governmental jurisdiction where data
-                  protection laws may differ. By using our Service, you consent to the transfer of
-                  your information to our facilities and those third parties with whom we share it
-                  as described in this Privacy Policy.
-                </p>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">12. Changes to This Privacy Policy</h2>
-                <p className="legal-text">
-                  We may update our Privacy Policy from time to time. We will notify you of any
-                  changes by posting the new Privacy Policy on this page and updating the "Last
-                  Updated" date. You are advised to review this Privacy Policy periodically for
-                  any changes.
-                </p>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">13. Contact Us</h2>
-                <p className="legal-text">
-                  If you have any questions about this Privacy Policy or wish to exercise your
-                  rights regarding your personal data, please contact us at:
-                </p>
-                <ul className="legal-list">
-                  <li>Email: patilmohit2486@gmail.com</li>
-                  <li>Phone: 9021796092</li>
-                  <li>Address: Ravet, Pune</li>
-                </ul>
-              </section>
-
-              <section className="legal-section">
-                <h2 className="legal-heading">14. Consent</h2>
-                <p className="legal-text">
-                  By using our Service, you consent to our Privacy Policy and agree to its terms.
-                  If you do not agree with this policy, please do not use our Service.
-                </p>
-              </section>
-            </div>
-          </div>
+            ))}
+            <section className="legal-section">
+              <h2 className="legal-heading">Contact about privacy</h2>
+              <p className="legal-text">Email <a href="mailto:mp8651188@gmail.com">mp8651188@gmail.com</a> or visit our <Link to="/contact-us">Contact page</Link>. Describe your request without including your password, verification codes, or bank credentials.</p>
+            </section>
+            <Link className="contact-link" to="/about-us">Learn more about Spendly</Link>
+          </article>
         </div>
       </div>
-      <Footer />
-    </>
-  );
-};
+    </main>
+    <Footer />
+  </>
+);
 
 export default PrivacyAndPolicy;

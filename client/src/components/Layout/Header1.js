@@ -4,7 +4,7 @@ import { Button } from "antd";
 import "../../styles/HomeHeader.css";
 import logo from "../../../src/Images/logo.png";
 
-const Header1 = () => {
+const Header1 = ({ allowAuthenticated = false }) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -13,11 +13,11 @@ const Header1 = () => {
     const user = localStorage.getItem("user");
     if (user) {
       setIsLoggedIn(true);
-      navigate("/user");
+      if (!allowAuthenticated) navigate("/user");
     } else {
       setIsLoggedIn(false);
     }
-  }, [navigate]);
+  }, [navigate, allowAuthenticated]);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-dark sticky-top">

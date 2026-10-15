@@ -115,4 +115,4 @@ Contact: [mp8651188@gmail.com](mailto:mp8651188@gmail.com).
 
 ## Credits
 
-Based on [Expense Management System by Prakashsaw](https://github.com/Prakashsaw/Expense-Management-System). The original project identifies its license as MIT; preserve applicable original notices when redistributing.
+Built on an existing expense management project and customized as Spendly. The original project identifies its license as MIT; preserve applicable original notices when redistributing.
